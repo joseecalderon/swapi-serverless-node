@@ -3,7 +3,7 @@ import { DynamoDB } from 'aws-sdk';
 import { formatJSONResponse } from '@libs/apiGateway';
 import type { Response } from '@libs/apiGateway';
 import type { Planetas } from '@interfaces/planets';
-import { Config } from '@config/constants/config';
+import { TableName } from '@config/constants/config';
 import { middyfy } from '@libs/lambda';
 import type { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 
@@ -22,7 +22,7 @@ const createPlanet = async (event, context, callback): Promise<Response> => {
         }
 
         const params: DocumentClient.PutItemInput = {
-            TableName: Config.DYNAMODB_TABLE,
+            TableName,
             Item: {
                 id: uuid.v1(),
                 fecha_edicion: null,

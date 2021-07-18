@@ -1,7 +1,7 @@
 import { formatJSONResponse } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
 import { DynamoDB } from 'aws-sdk';
-import { Config } from '@config/constants/config';
+import { TableName } from '@config/constants/config';
 import { Planetas } from '@interfaces/planets';
 import type { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 
@@ -22,7 +22,7 @@ const putPlanets = async (event, context, callback) => {
         }
 
         const params: DocumentClient.UpdateItemInput = {
-            TableName: Config.DYNAMODB_TABLE,
+            TableName,
             Key: {
                 id: planetId || 1
             },

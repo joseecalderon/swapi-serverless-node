@@ -1,5 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-import { Config } from '@config/constants/config';
+import { Config, TableName } from '@config/constants/config';
 
 import { default as Functions} from '@functions/index';
 
@@ -41,7 +41,7 @@ const serverlessConfiguration: AWS = {
     region: 'us-east-1',
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DYNAMODB_TABLE: Config.DYNAMODB_TABLE
+      DYNAMODB_TABLE: TableName
     },
     lambdaHashingVersion: '20201221',
     apiGateway: {
@@ -94,7 +94,7 @@ const serverlessConfiguration: AWS = {
             ReadCapacityUnits: 1,
             WriteCapacityUnits: 1
           },
-          TableName: Config.DYNAMODB_TABLE
+          TableName: TableName
         }
       }
     }

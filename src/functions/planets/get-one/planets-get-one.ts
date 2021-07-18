@@ -1,7 +1,7 @@
 import { formatJSONResponse } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
 import { DynamoDB } from 'aws-sdk';
-import { Config } from '@config/constants/config';
+import { TableName } from '@config/constants/config';
 import type { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 
 const dynamoDb = new DynamoDB.DocumentClient();
@@ -13,7 +13,7 @@ const getOnePlanet = async (event, context, callback) => {
         const { id: planetId }: { id: string } = event.pathParameters;
 
         const params: DocumentClient.GetItemInput = {
-            TableName: Config.DYNAMODB_TABLE,
+            TableName,
             Key: {
               id: planetId || 1
             }

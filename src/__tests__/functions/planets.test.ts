@@ -18,7 +18,7 @@ const JupiterDataTest: Partial<Planetas> = {
 };
 
 describe('Test Planets', () => {
-    const url = Config.URL_DEV + '/planet';
+    const url = Config.URL_PROD	 + '/planet';
 
     it('debería guardar un objeto del tipo planeta', async () => {
         expect.assertions(2);

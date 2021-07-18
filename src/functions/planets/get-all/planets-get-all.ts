@@ -1,7 +1,7 @@
 import { formatJSONResponse } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
 import { DynamoDB } from 'aws-sdk';
-import { Config } from '@config/constants/config';
+import { TableName } from '@config/constants/config';
 import type { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 
 const dynamoDb = new DynamoDB.DocumentClient();
@@ -11,7 +11,7 @@ const getAllPlanets = async (event, context, callback) => {
         console.log('[getAllPlanets] request: ', {event, context, callback});
 
         const params: DocumentClient.ScanInput = {
-            TableName: Config.DYNAMODB_TABLE
+            TableName
         };
 
         const result = await dynamoDb.scan(params).promise();
