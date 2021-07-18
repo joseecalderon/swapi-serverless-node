@@ -11,7 +11,7 @@ export function get(url: string, id?: number, params?: any): Promise<AxiosRespon
 }
 
 
-export function post(url: string, body: Record<string, any>, params?: any): Promise<AxiosResponse<any>> {
+export function post(url: string, body: string, params?: any): Promise<AxiosResponse<any>> {
     return axios.post(url, body, {
         params
     });

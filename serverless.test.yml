@@ -1,0 +1,15 @@
+- name: Petición HTTP GET para obtener lista de películas
+  endpoint:
+    function: films-get-all
+  response:
+    status: 200
+- name: Petición HTTP GET para obtener lista de personas
+  endpoint:
+    function: people-get-all
+  response:
+    status: 200
+- name: Petición HTTP GET para obtener lista de planetas
+  endpoint:
+    function: planet-get-all
+  response:
+    status: 200
