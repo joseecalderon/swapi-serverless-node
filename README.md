@@ -1,4 +1,4 @@
-######  PARA MAS DETALLE VER: https://app.swaggerhub.com/apis-docs/joseecalderon/swapi-serverless-node/1
+######  PARA MAS DETALLE VER: https://app.swaggerhub.com/apis-docs/joseecalderon/AWS-serverless-node-swapi/1
 
 ## Instalar dependencias y correr en local
 
