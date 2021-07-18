@@ -16,7 +16,7 @@ const getAllPlanets = async (event, context, callback) => {
 
         const result = await dynamoDb.scan(params).promise();
 
-        return formatJSONResponse({data: result.Items}, 200);
+        return formatJSONResponse(result.Items, 200);
     } catch (error) {
         console.error('ERROR [getAllPlanets]: ', error);
         return formatJSONResponse({ error: error.message || 'Error al crear el planeta' }, 500);

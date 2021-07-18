@@ -14,19 +14,39 @@ const serverlessConfiguration: AWS = {
     },
     jest: {
       collectCoverage: true
-    }
+    },
+    // dynamodb: {
+    //   stages: ['dev'],
+    //   start: {
+    //     port: 8000,
+    //     inMemory: true,
+    //     heapInitial: '200m',
+    //     heapMax: '1g',
+    //     migrate: true,
+    //     seed: true,
+    //     convertEmptyValues: true
+    //   }
+    // }
   },
-  plugins: ['serverless-webpack', 'serverless-offline', 'serverless-dynamodb-local', 'serverless-jest-plugin'],
+  plugins: [
+    'serverless-webpack',
+    'serverless-dynamodb-local',
+    'serverless-offline',
+    'serverless-jest-plugin',
+    'serverless-stack-output'
+  ],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
-    apiGateway: {
-      minimumCompressionSize: 1024,
-      shouldStartNameWithService: true,
-    },
+    region: 'us-east-1',
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       DYNAMODB_TABLE: Config.DYNAMODB_TABLE
+    },
+    lambdaHashingVersion: '20201221',
+    apiGateway: {
+      minimumCompressionSize: 1024,
+      shouldStartNameWithService: true,
     },
     iam: {
       role: {
@@ -46,7 +66,9 @@ const serverlessConfiguration: AWS = {
         ]
       }
     },
-    lambdaHashingVersion: '20201221',
+  },
+  package: {
+    individually: true
   },
   // import lambda functions
   functions: Functions,

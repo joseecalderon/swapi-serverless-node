@@ -11,9 +11,7 @@ const getAllFilms = async (event, context, cb): Promise<Response> => {
 
         const { data } = await get(`${Config.SWAPI_PATH}/films`);
 
-        data.results = parseFilms(data.results);
-
-        return formatJSONResponse(data, 200);
+        return formatJSONResponse(parseFilms(data.results || []), 200);
     } catch (error) {
         return handleError(error);
     }
